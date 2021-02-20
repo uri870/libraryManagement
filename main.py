@@ -81,6 +81,11 @@ def get_command():
             print("goodbye!")
             exit(1)
 
+        elif user_input[0] == "status":
+            i_o.print_current_status(users, books)
+
+            continue
+
         elif user_input[3] == "+":
             # borrow book operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
