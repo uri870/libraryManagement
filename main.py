@@ -82,6 +82,7 @@ def get_command():
             exit(1)
 
         elif user_input[0] == "status":
+            # diagnostic command to show data stored in arrays
             i_o.print_current_status(users, books)
 
             continue
