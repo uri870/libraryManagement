@@ -63,7 +63,7 @@ def get_command():
             io.echo_cmd(user_input)  # prints back command entered by the user
             if user_input[1][0].isdigit():  # checks if query of user
                 u, uid, b = user_management.find_user(user_input, users)  # returns user name, id and all books borrowed
-                io.print_found_books(u, uid, b)
+                io.print_found_books(u, uid, b) # prints query results
             elif user_input[1][0].isalpha():  # checks if query of book
                 io.print_found_user(user_input[1], book_management.find_book(user_input, books))
 
