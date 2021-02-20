@@ -43,10 +43,10 @@ def echo_cmd(s):
 
 
 def print_current_status(users, books):
-    # print("Current users: " + str(users))
-    # print("Current books: " + str(books))
-    # print("There are "+str(sum(value is None for value in users.values()))+" spaces left for users")
-    print("\n")
+    print("Current users: " + str(users))
+    print("Current books: " + str(books))
+    print("There are "+str(sum(value is None for value in users.values()))+" spaces left for users")
+    print("There are " + str(sum(value is None for value in books.values())) + " spaces left for books")
 
 
 def print_most_books(u):
