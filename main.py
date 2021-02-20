@@ -48,48 +48,54 @@ def get_command():
         #  loop to continue receive user commands until exit
         user_input = i_o.get_input()  # s variable to hold user input
         if user_input[0] == "+":
+            # add user operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
             users = user_management.add_user(user_input, users)  # add new user and assign to the user array
             i_o.print_user_added(user_input[1], user_input[2])  # prints user added message
-            i_o.print_current_status(users, books)  # TBD REMOVE
             continue
         elif user_input[0] == "-":
+            # remove user operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
             users = user_management.remove_user(user_input, users)  # remove user and assign to the user array
             i_o.print_user_removed(user_input[1], user_input[2]) # prints user removed message
-            i_o.print_current_status(users, books)  # TBD REMOVE
             continue
         elif user_input[0] == "?":
+            # queries operations
             i_o.echo_cmd(user_input)  # prints back command entered by the user
-            if user_input[1][0].isdigit():  # checks if query of user
+            if user_input[1][0].isdigit():
+                # user query operation
                 u, uid, b = user_management.find_user(user_input, users)  # returns user name, id and all books borrowed
                 i_o.print_found_books(u, uid, b)  # prints query results
-            elif user_input[1][0].isalpha():  # checks if query of book
+            elif user_input[1][0].isalpha():
+                # book query operation
                 i_o.print_found_user(user_input[1], book_management.find_book(user_input, books))  # prints query result
-
             else:
+                # most books operation
                 i_o.print_most_books(most_books.find_most_books(users))
 
             continue
+
         elif user_input[0] == "exit":
+            # exit program in case user types 'exit'
             i_o.echo_cmd(user_input)
             print("goodbye!")
             exit(1)
+
         elif user_input[3] == "+":
+            # borrow book operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
-            if not user_management.books_check(user_input, users):  # check if user has 10 books, if yes print error
-                books, users = book_management.borrow_book(user_input, books, users)
-                i_o.print_book_added(user_input[2], user_input[1])
-                i_o.print_current_status(users, books)
+            if not user_management.books_check(user_input, users):  # check if user already borrowed 10 books
+                books, users = book_management.borrow_book(user_input, books, users)  # update users and books
+                i_o.print_book_added(user_input[2], user_input[1])  # print book added message
             else:
-                i_o.print_max_reached(user_input)
-                i_o.print_current_status(users, books)
+                i_o.print_max_reached(user_input)  # print error maximum books per user
             continue
+
         elif user_input[3] == "-":
+            # Return book operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
-            books, users = book_management.return_book(user_input, books, users)
-            i_o.print_book_removed(user_input[2], user_input[1])
-            # input_output.print_current_status(users, books)
+            books, users = book_management.return_book(user_input, books, users)  # update users and books
+            i_o.print_book_removed(user_input[2], user_input[1])  # print book returned message
             continue
 
 
