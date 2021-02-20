@@ -19,7 +19,7 @@ user_management.py - handling user functions (adding, removing and user queries)
 book_management.py - handling book functions (borrowing, returning and book queries)
 most_books.py - implements the most books query
 hash_actions.py - implements the hash table functions to store the data in the 'users' and 'books' hash tables
-io.py - handles the inputs and outputs of the program
+i_o.py - handles the inputs and outputs of the program
 
 The program uses hash tables with open addressing algorithm to populate 2 arrays:
 users: array of type dictionary holding a list for each user with the following fields: 'user name', 'id number' and
@@ -32,7 +32,7 @@ The program uses hash tables and open addressing to store the data.
 
 import book_management
 import most_books
-import io
+import i_o
 import user_management
 
 m = 100  # hash tables size
@@ -46,49 +46,49 @@ def get_command():
 
     while 1:
         #  loop to continue receive user commands until exit
-        user_input = io.get_input()  # s variable to hold user input
+        user_input = i_o.get_input()  # s variable to hold user input
         if user_input[0] == "+":
-            io.echo_cmd(user_input)  # prints back command entered by the user
+            i_o.echo_cmd(user_input)  # prints back command entered by the user
             users = user_management.add_user(user_input, users)  # add new user and assign to the user array
-            io.print_user_added(user_input[1], user_input[2])  # prints user added message
-            io.print_current_status(users, books)  # TBD REMOVE
+            i_o.print_user_added(user_input[1], user_input[2])  # prints user added message
+            i_o.print_current_status(users, books)  # TBD REMOVE
             continue
         elif user_input[0] == "-":
-            io.echo_cmd(user_input)  # prints back command entered by the user
+            i_o.echo_cmd(user_input)  # prints back command entered by the user
             users = user_management.remove_user(user_input, users)  # remove user and assign to the user array
-            io.print_user_removed(user_input[1], user_input[2]) # prints user removed message
-            io.print_current_status(users, books)  # TBD REMOVE
+            i_o.print_user_removed(user_input[1], user_input[2]) # prints user removed message
+            i_o.print_current_status(users, books)  # TBD REMOVE
             continue
         elif user_input[0] == "?":
-            io.echo_cmd(user_input)  # prints back command entered by the user
+            i_o.echo_cmd(user_input)  # prints back command entered by the user
             if user_input[1][0].isdigit():  # checks if query of user
                 u, uid, b = user_management.find_user(user_input, users)  # returns user name, id and all books borrowed
-                io.print_found_books(u, uid, b)  # prints query results
+                i_o.print_found_books(u, uid, b)  # prints query results
             elif user_input[1][0].isalpha():  # checks if query of book
-                io.print_found_user(user_input[1], book_management.find_book(user_input, books))
+                i_o.print_found_user(user_input[1], book_management.find_book(user_input, books))  # prints query result
 
             else:
-                io.print_most_books(most_books.find_most_books(users))
+                i_o.print_most_books(most_books.find_most_books(users))
 
             continue
         elif user_input[0] == "exit":
-            io.echo_cmd(user_input)
+            i_o.echo_cmd(user_input)
             print("goodbye!")
             exit(1)
         elif user_input[3] == "+":
-            io.echo_cmd(user_input)  # prints back command entered by the user
+            i_o.echo_cmd(user_input)  # prints back command entered by the user
             if not user_management.books_check(user_input, users):  # check if user has 10 books, if yes print error
                 books, users = book_management.borrow_book(user_input, books, users)
-                io.print_book_added(user_input[2], user_input[1])
-                io.print_current_status(users, books)
+                i_o.print_book_added(user_input[2], user_input[1])
+                i_o.print_current_status(users, books)
             else:
-                io.print_max_reached(user_input)
-                io.print_current_status(users, books)
+                i_o.print_max_reached(user_input)
+                i_o.print_current_status(users, books)
             continue
         elif user_input[3] == "-":
-            io.echo_cmd(user_input)  # prints back command entered by the user
+            i_o.echo_cmd(user_input)  # prints back command entered by the user
             books, users = book_management.return_book(user_input, books, users)
-            io.print_book_removed(user_input[2], user_input[1])
+            i_o.print_book_removed(user_input[2], user_input[1])
             # input_output.print_current_status(users, books)
             continue
 
