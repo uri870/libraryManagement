@@ -4,14 +4,14 @@ This Program is for library management which is used to manage library users and
     in the main.py file).
 
 The program provides the following operations:
-1) Add user - adds new library user to the system
-2) Remove user - removes a library user from the system
-3) Borrow book - creates a new record of book borrowed by specific library user
-4) Return book - removes the record of a book borrowed by specific library user
+1) Add user - adds new library user to the system, complexity in average is O(1)
+2) Remove user - removes a library user from the system, complexity in average is O(1)
+3) Borrow book - creates a new record of book borrowed by specific library user, complexity in average is O(1)
+4) Return book - removes the record of a book borrowed by specific library user, complexity in average is O(1)
 5) System queries:
-    a) User query - finds all books borrowed by a specific user
-    b) Book query - finds the user currently borrowing a specific book
-    c) Most books query - Find the users currently borrowing the most books
+    a) User query - finds all books borrowed by a specific user, complexity in average is O(1)
+    b) Book query - finds the user currently borrowing a specific book, complexity in average is O(1)
+    c) Most books query - Find the users currently borrowing the most books, complexity is O(n)
 
 The program includes the following files:
 main.py - implements the main program which allows user to input the desired command and execute the program functions.
