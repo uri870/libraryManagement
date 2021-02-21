@@ -15,7 +15,7 @@ def borrow_book(s, books, users):
 def return_book(s, books, users):
     # return book function receive the user command 's' and the arrays 'books' and 'users' and removes the book borrowed
     # complexity is O(1)
-    j = hash_actions.hash_search_boooks(books, s[2])  # find book using hash search, sending only 4 digit part of book
+    j = hash_actions.hash_search_books(books, s[2])  # find book using hash search, sending only 4 digit part of book
     # id
     books[j] = None  # updates books array
     h = hash_actions.hash_search_users(users, s[1])  # find the user returning index
