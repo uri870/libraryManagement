@@ -22,14 +22,30 @@ def hash_insert(t, k):
     print("hash overflow")
 
 
-def hash_search(t, k):
-    # hash search algorithm as per learning book, receives the users/books array and the id and returns the index where
+def hash_search_users(users, k):
+    # hash search algorithm as per learning book, receives the users array and the id and returns the index where
     # the value is found. complexity is O(1)
     i = 0
-    while i < len(t):
+    while i < len(users):
         j = h(int(k), i)
-        if t[j] is not None:
-            if t[j][0] == k:
+        if users[j] is not None:
+            if users[j][0] == k:
+                return j
+            else:
+                i = i + 1
+        else:
+            i = i + 1
+    return
+
+
+def hash_search_books(books, k):
+    # hash search algorithm as per learning book, receives the books array and the id and returns the index where
+    # the value is found. complexity is O(1)
+    i = 0
+    while i < len(books):
+        j = h(int(k[2:]), i)
+        if books[j] is not None:
+            if books[j][0] == k:
                 return j
             else:
                 i = i + 1
