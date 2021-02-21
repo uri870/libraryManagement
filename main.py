@@ -92,7 +92,7 @@ def get_command():
             i_o.echo_cmd(user_input)  # prints back command entered by the user
             if not user_management.books_check(user_input, users):  # check if user already borrowed 10 books
                 books, users = book_management.borrow_book(user_input, books, users)  # update users and books
-                i_o.print_book_added(user_input[2], user_input[1])  # print book added message
+                i_o.print_book_borrowed(user_input[2], user_input[1])  # print book added message
             else:
                 i_o.print_max_reached(user_input)  # print error maximum books per user
             continue
@@ -101,7 +101,7 @@ def get_command():
             # Return book operation
             i_o.echo_cmd(user_input)  # prints back command entered by the user
             books, users = book_management.return_book(user_input, books, users)  # update users and books
-            i_o.print_book_removed(user_input[2], user_input[1])  # print book returned message
+            i_o.print_book_returned(user_input[2], user_input[1])  # print book returned message
             continue
 
 
